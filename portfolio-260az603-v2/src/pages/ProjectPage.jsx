@@ -2,19 +2,32 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import SectionTitle from "@/components/SectionTitle";
 import ProjectCard from "@/components/ProjectCard";
-import { projects, categories } from "@/data/projects";
+import { useProjects } from "@/hooks/useProjects";
 
 const eased = [0.22, 1, 0.36, 1];
 
+const categories = [
+  { value: "all", label: "All" },
+  { value: "frontend", label: "Frontend" },
+  { value: "backend", label: "Backend" },
+  { value: "fullstack", label: "Full Stack" },
+  { value: "collab", label: "Collab" },
+];
+
+const SkeletonCard = () => (
+  <div className="h-[420px] animate-pulse rounded-2xl border border-border bg-card/40" />
+);
+
 const ProjectPage = () => {
   const [filter, setFilter] = useState("all");
+  const { projects, loading } = useProjects();
 
   const filtered = useMemo(
     () =>
       filter === "all"
         ? projects
-        : projects.filter((p) => p.category.includes(filter)),
-    [filter]
+        : projects.filter((p) => p.categories?.includes(filter)),
+    [filter, projects]
   );
 
   return (
@@ -25,7 +38,6 @@ const ProjectPage = () => {
       <div className="container mx-auto px-4 py-32">
         <SectionTitle eyebrow="Selected work">My Projects</SectionTitle>
 
-        {/* Filter pills with sliding active background */}
         <LayoutGroup>
           <motion.div
             className="mb-14 flex justify-center"
@@ -64,15 +76,25 @@ const ProjectPage = () => {
             layout
             className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
           >
+            {loading && Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
             <AnimatePresence mode="popLayout">
-              {filtered.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
+              {!loading &&
+                filtered.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={{
+                      ...project,
+                      image: project.image_url,
+                      demoUrl: project.demo_url,
+                      codeUrl: project.code_url,
+                    }}
+                  />
+                ))}
             </AnimatePresence>
           </motion.div>
         </LayoutGroup>
 
-        {filtered.length === 0 && (
+        {!loading && filtered.length === 0 && (
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
