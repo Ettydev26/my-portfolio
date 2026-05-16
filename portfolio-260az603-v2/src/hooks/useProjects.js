@@ -126,13 +126,21 @@ export function useProjects() {
   }
 
   async function reorderProjects(orderedIds) {
+    if (orderedIds.length !== projects.length) {
+      throw new Error("reorderProjects: orderedIds length must match current projects");
+    }
+    const knownIds = new Set(projects.map((p) => p.id));
+    for (const id of orderedIds) {
+      if (!knownIds.has(id)) {
+        throw new Error(`reorderProjects: unknown project id ${id}`);
+      }
+    }
+
     const previous = projects;
-    const optimistic = orderedIds
-      .map((id, i) => {
-        const p = previous.find((x) => x.id === id);
-        return p ? { ...p, sort_order: i + 1 } : null;
-      })
-      .filter(Boolean);
+    const optimistic = orderedIds.map((id, i) => {
+      const p = previous.find((x) => x.id === id);
+      return { ...p, sort_order: i + 1 };
+    });
     setProjects(optimistic);
 
     const updates = orderedIds.map((id, i) =>
@@ -141,7 +149,7 @@ export function useProjects() {
     const results = await Promise.all(updates);
     const firstError = results.find((r) => r.error);
     if (firstError) {
-      setProjects(previous); // rollback
+      await refetch(); // re-sync local state with whatever the DB now has
       throw new Error(firstError.error.message);
     }
   }
