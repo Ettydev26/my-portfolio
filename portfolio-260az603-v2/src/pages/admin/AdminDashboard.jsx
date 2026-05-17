@@ -1,19 +1,70 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, LogOut } from "lucide-react";
+import {
+  DndContext,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  closestCenter,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  rectSortingStrategy,
+  arrayMove,
+  useSortable,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { useAuth } from "@/hooks/useAuth";
 import { useProjects } from "@/hooks/useProjects";
 import AdminProjectCard from "@/components/admin/AdminProjectCard";
 import EditPanel from "@/components/admin/EditPanel";
 import ProjectForm from "@/components/admin/ProjectForm";
 
+const SortableCard = ({ project, onEdit, onDelete }) => {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id: project.id });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 10 : "auto",
+    opacity: isDragging ? 0.85 : 1,
+  };
+  return (
+    <div ref={setNodeRef} style={style}>
+      <AdminProjectCard
+        project={project}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        dragHandleProps={{ ...attributes, ...listeners }}
+      />
+    </div>
+  );
+};
+
 const AdminDashboard = () => {
   const { user, signOut } = useAuth();
-  const { projects, loading, addProject, updateProject, deleteProject } =
+  const { projects, loading, addProject, updateProject, deleteProject, reorderProjects } =
     useProjects();
   const [adding, setAdding] = useState(false);
   const [editing, setEditing] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+
+  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 6 } }));
+
+  async function handleDragEnd(event) {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+    const oldIndex = projects.findIndex((p) => p.id === active.id);
+    const newIndex = projects.findIndex((p) => p.id === over.id);
+    const next = arrayMove(projects, oldIndex, newIndex);
+    try {
+      await reorderProjects(next.map((p) => p.id));
+    } catch (e) {
+      console.error(e);
+      alert(`Could not reorder: ${e.message}`);
+    }
+  }
 
   async function handleAddSubmit(values) {
     setSubmitting(true);
@@ -22,7 +73,7 @@ const AdminDashboard = () => {
       setAdding(false);
     } catch (e) {
       console.error(e);
-      alert(`Could not add project: ${e.message}`); // replaced with toast in Task 17
+      alert(`Could not add project: ${e.message}`);
     } finally {
       setSubmitting(false);
     }
@@ -97,18 +148,22 @@ const AdminDashboard = () => {
       )}
 
       {!loading && projects.length > 0 && (
-        <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {projects.map((project) => (
-              <AdminProjectCard
-                key={project.id}
-                project={project}
-                onEdit={(p) => setEditing(p)}
-                onDelete={handleDelete}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+          <SortableContext items={projects.map((p) => p.id)} strategy={rectSortingStrategy}>
+            <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <AnimatePresence mode="popLayout">
+                {projects.map((project) => (
+                  <SortableCard
+                    key={project.id}
+                    project={project}
+                    onEdit={(p) => setEditing(p)}
+                    onDelete={handleDelete}
+                  />
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </SortableContext>
+        </DndContext>
       )}
 
       <EditPanel
