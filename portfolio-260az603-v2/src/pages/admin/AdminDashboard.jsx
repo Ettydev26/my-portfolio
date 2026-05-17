@@ -4,20 +4,49 @@ import { Plus, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useProjects } from "@/hooks/useProjects";
 import AdminProjectCard from "@/components/admin/AdminProjectCard";
+import EditPanel from "@/components/admin/EditPanel";
+import ProjectForm from "@/components/admin/ProjectForm";
 
 const AdminDashboard = () => {
   const { user, signOut } = useAuth();
-  const { projects, loading, deleteProject } = useProjects();
+  const { projects, loading, addProject, updateProject, deleteProject } =
+    useProjects();
   const [adding, setAdding] = useState(false);
   const [editing, setEditing] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  // EditPanel wiring comes in a later task.
+  async function handleAddSubmit(values) {
+    setSubmitting(true);
+    try {
+      await addProject(values);
+      setAdding(false);
+    } catch (e) {
+      console.error(e);
+      alert(`Could not add project: ${e.message}`); // replaced with toast in Task 17
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  async function handleEditSubmit(values) {
+    setSubmitting(true);
+    try {
+      await updateProject(editing.id, values);
+      setEditing(null);
+    } catch (e) {
+      console.error(e);
+      alert(`Could not save changes: ${e.message}`);
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   async function handleDelete(project) {
     try {
       await deleteProject(project.id);
     } catch (e) {
-      console.error(e); // toast wiring comes later
+      console.error(e);
+      alert(`Could not delete: ${e.message}`);
     }
   }
 
@@ -82,7 +111,32 @@ const AdminDashboard = () => {
         </motion.div>
       )}
 
-      {/* EditPanel mount point — wired in Task 15 */}
+      <EditPanel
+        open={adding}
+        title="Add new project"
+        onClose={() => !submitting && setAdding(false)}
+      >
+        <ProjectForm
+          onSubmit={handleAddSubmit}
+          onCancel={() => setAdding(false)}
+          submitting={submitting}
+        />
+      </EditPanel>
+
+      <EditPanel
+        open={!!editing}
+        title="Edit project"
+        onClose={() => !submitting && setEditing(null)}
+      >
+        {editing && (
+          <ProjectForm
+            initial={editing}
+            onSubmit={handleEditSubmit}
+            onCancel={() => setEditing(null)}
+            submitting={submitting}
+          />
+        )}
+      </EditPanel>
     </div>
   );
 };
