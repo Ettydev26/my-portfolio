@@ -7,6 +7,7 @@ import AboutPage from "./pages/AboutPage";
 import ProjectPage from "./pages/ProjectPage";
 import ContactPage from "./pages/ContactPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import AdminPage from "./pages/admin/AdminPage";
 
 import Navbar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -38,6 +39,7 @@ const AnimatedRoutes = () => {
           <Route element={<AboutPage />}     path="/about" />
           <Route element={<ProjectPage />}   path="/project" />
           <Route element={<ContactPage />}   path="/contact" />
+          <Route element={<AdminPage />}     path="/admin" />
           <Route element={<NotFoundPage />}  path="*" />
         </Routes>
       </motion.div>
