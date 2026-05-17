@@ -20,6 +20,8 @@ import { useProjects } from "@/hooks/useProjects";
 import AdminProjectCard from "@/components/admin/AdminProjectCard";
 import EditPanel from "@/components/admin/EditPanel";
 import ProjectForm from "@/components/admin/ProjectForm";
+import Toaster from "@/components/admin/Toaster";
+import { pushToast } from "@/hooks/useToast";
 
 const SortableCard = ({ project, onEdit, onDelete }) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
@@ -62,7 +64,7 @@ const AdminDashboard = () => {
       await reorderProjects(next.map((p) => p.id));
     } catch (e) {
       console.error(e);
-      alert(`Could not reorder: ${e.message}`);
+      pushToast(`Could not reorder: ${e.message}`);
     }
   }
 
@@ -73,7 +75,7 @@ const AdminDashboard = () => {
       setAdding(false);
     } catch (e) {
       console.error(e);
-      alert(`Could not add project: ${e.message}`);
+      pushToast(`Could not add project: ${e.message}`, { onRetry: () => handleAddSubmit(values) });
     } finally {
       setSubmitting(false);
     }
@@ -86,7 +88,7 @@ const AdminDashboard = () => {
       setEditing(null);
     } catch (e) {
       console.error(e);
-      alert(`Could not save changes: ${e.message}`);
+      pushToast(`Could not save changes: ${e.message}`, { onRetry: () => handleEditSubmit(values) });
     } finally {
       setSubmitting(false);
     }
@@ -97,7 +99,7 @@ const AdminDashboard = () => {
       await deleteProject(project.id);
     } catch (e) {
       console.error(e);
-      alert(`Could not delete: ${e.message}`);
+      pushToast(`Could not delete: ${e.message}`, { onRetry: () => handleDelete(project) });
     }
   }
 
@@ -192,6 +194,8 @@ const AdminDashboard = () => {
           />
         )}
       </EditPanel>
+
+      <Toaster />
     </div>
   );
 };
