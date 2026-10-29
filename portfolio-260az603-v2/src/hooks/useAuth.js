@@ -6,6 +6,11 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
       setLoading(false);
@@ -19,6 +24,7 @@ export function useAuth() {
   }, []);
 
   async function signIn(email, password) {
+    if (!supabase) return "Admin is unavailable: Supabase is not configured.";
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -27,6 +33,7 @@ export function useAuth() {
   }
 
   async function signOut() {
+    if (!supabase) return;
     await supabase.auth.signOut();
   }
 
