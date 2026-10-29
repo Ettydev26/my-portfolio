@@ -44,7 +44,7 @@ export const experiences = [
   {
     title: "Founder & Full-Stack Engineer",
     company: "Independent Products",
-    period: "Current", // TODO: replace with "<start year> — Present"
+    period: "Jun 2025 — Present",
     description:
       "Build and run StockIntel NGX, a Nigerian Exchange stock research platform with paying subscribers: serverless API proxy, Cloudflare WAF and rate limiting, daily price-history pipelines, and Gemini-powered company profiles with guardrails against fabricated AI output. Also built an NGX dividend-alert Telegram bot with a Paystack freemium paywall, a Flask webhook service on Railway and Brevo email digests.",
   },
