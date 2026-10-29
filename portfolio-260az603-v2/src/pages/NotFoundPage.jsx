@@ -14,8 +14,8 @@ const NotFoundPage = () => {
 
       <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4">
         {/* Atmosphere */}
-        <div aria-hidden className="absolute top-1/4 -left-20 h-96 w-96 rounded-full bg-purple-600/20 blur-3xl" style={{ animation: "orb 12s ease-in-out infinite" }} />
-        <div aria-hidden className="absolute bottom-1/4 right-0 h-80 w-80 rounded-full bg-pink-500/20 blur-3xl" style={{ animation: "orb 16s ease-in-out infinite reverse" }} />
+        <div aria-hidden className="absolute top-1/4 -left-20 h-96 w-96 rounded-full bg-cyan-600/20 blur-3xl orb-soft" style={{ animation: "orb 12s ease-in-out infinite" }} />
+        <div aria-hidden className="absolute bottom-1/4 right-0 h-80 w-80 rounded-full bg-sky-500/20 blur-3xl orb-soft" style={{ animation: "orb 16s ease-in-out infinite reverse" }} />
         <div aria-hidden className="absolute inset-0 bg-grid-pattern" />
 
         <motion.div
@@ -31,7 +31,7 @@ const NotFoundPage = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.7, ease: eased, delay: 0.1 }}
           >
-            <span className="relative block text-[clamp(8rem,22vw,18rem)] gradient-text">
+            <span className="relative block text-[clamp(8rem,22vw,18rem)] text-primary">
               404
               <span aria-hidden className="glitch-layer r block">404</span>
               <span aria-hidden className="glitch-layer b block">404</span>
@@ -66,7 +66,7 @@ const NotFoundPage = () => {
             <MagneticWrap>
               <Button
                 asChild
-                className="h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 text-white border-0 glow-sm hover:from-purple-600 hover:to-pink-600"
+                className="h-12 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500 px-6 text-white border-0 glow-sm hover:from-cyan-600 hover:to-sky-600"
               >
                 <Link to="/">
                   <ArrowLeft className="mr-1" />

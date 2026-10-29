@@ -60,7 +60,7 @@ const CustomCursor = () => {
         transition={{ scale: { type: "spring", damping: 18, stiffness: 300 } }}
       />
       <motion.div
-        className="cursor-ring"
+        className={`cursor-ring${hovering ? " is-hovering" : ""}`}
         style={{
           x: ringX,
           y: ringY,
@@ -68,11 +68,9 @@ const CustomCursor = () => {
           translateY: "-50%",
           opacity: visible ? 1 : 0,
           scale: hovering ? 1.6 : 1,
-          borderColor: hovering ? "rgba(236, 72, 153, 0.7)" : "rgba(192, 132, 252, 0.55)",
         }}
         transition={{
           scale: { type: "spring", damping: 18, stiffness: 200 },
-          borderColor: { duration: 0.2 },
         }}
       />
     </>

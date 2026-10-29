@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { path: "/",        label: "Home" },
@@ -48,7 +49,7 @@ const Navbar = () => {
             className="font-display text-2xl font-bold tracking-tight"
             aria-label="EttyDev — home"
           >
-            <span className="gradient-text">Etty</span>
+            <span className="text-primary">Etty</span>
             <span className="text-foreground">.dev</span>
           </Link>
 
@@ -71,7 +72,7 @@ const Navbar = () => {
                     {isActive && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -82,6 +83,8 @@ const Navbar = () => {
             ))}
           </div>
 
+          <div className="flex items-center gap-2">
+          <ThemeToggle />
           <button
             className="md:hidden p-2 rounded-lg text-foreground hover:bg-secondary/50 transition-colors"
             onClick={() => setIsMenuOpen((v) => !v)}
@@ -114,6 +117,7 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </button>
+          </div>
         </nav>
       </div>
 
@@ -140,7 +144,7 @@ const Navbar = () => {
                     className={({ isActive }) =>
                       `font-display block py-4 text-3xl font-semibold border-b border-border/30 transition-colors ${
                         isActive
-                          ? "gradient-text"
+                          ? "text-primary"
                           : "text-foreground hover:text-primary"
                       }`
                     }

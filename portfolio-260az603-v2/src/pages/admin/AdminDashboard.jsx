@@ -114,7 +114,7 @@ const AdminDashboard = () => {
           <button
             type="button"
             onClick={() => setAdding(true)}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2.5 text-sm font-medium text-white hover:from-purple-600 hover:to-pink-600 transition-all"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 px-4 py-2.5 text-sm font-medium text-white hover:from-cyan-600 hover:to-sky-600 transition-all"
           >
             <Plus size={16} /> Add new project
           </button>

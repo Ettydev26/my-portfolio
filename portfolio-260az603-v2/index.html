@@ -4,12 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0817" />
-    <meta name="description" content="Kehinde Etti — Full Stack Developer & Creative Coder. Crafting digital experiences with React, Django, Flutter and FastAPI." />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      // Apply theme before first paint to avoid a flash. Keep in sync with src/hooks/useTheme.js.
+      (function () {
+        var t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t !== "light" && t !== "dark") {
+          t = "light";
+        }
+        var r = document.documentElement;
+        r.classList.add(t);
+        r.style.colorScheme = t;
+        if (t === "dark") {
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0b1220");
+        }
+      })();
+    </script>
+    <meta name="description" content="Kehinde Etti — Full-Stack & AI Engineer. Building AI-powered products with Python, React, Node.js and FastAPI." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Geist:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
-    <title>EttyDev — Full Stack Developer & Creative Coder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>EttyDev — Full-Stack & AI Engineer</title>
   </head>
   <body>
     <div id="root"></div>

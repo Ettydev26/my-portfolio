@@ -63,7 +63,7 @@ const TiltImage = () => {
         viewport={{ once: true }}
         transition={{ delay: 0.4, type: "spring", stiffness: 160 }}
       >
-        <span className="font-display text-3xl font-bold gradient-text">
+        <span className="font-display text-3xl font-bold text-primary">
           <AnimatedCounter to={5} suffix="+" />
         </span>
         <span className="block text-xs uppercase tracking-[0.18em] text-muted-foreground">
@@ -78,7 +78,7 @@ const AboutPage = () => {
   return (
     <>
       <title>EttyDev — About</title>
-      <meta name="description" content="Background, skills, and experience of Kehinde Etti." />
+      <meta name="description" content="Kehinde Etti — Full-Stack & AI Engineer. Background, skills, and experience." />
 
       <div className="container mx-auto px-4 py-32">
         <SectionTitle eyebrow="About">A bit about me</SectionTitle>
@@ -94,31 +94,32 @@ const AboutPage = () => {
             className="flex flex-col justify-center"
           >
             <h3 className="font-display text-3xl md:text-4xl font-bold mb-6 text-balance">
-              Passionate about creating{" "}
-              <span className="font-serif-italic gradient-text">
-                digital experiences
+              Full-Stack & AI Engineer building{" "}
+              <span className="font-serif-italic text-primary">
+                intelligent products
               </span>
             </h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed text-pretty">
               <p>
-                I&rsquo;m a Full Stack Developer with 5+ years of professional
-                experience designing and delivering high-quality software. I
-                architect and implement RESTful APIs in Python with Django and
-                FastAPI — scalable, secure and maintainable.
+                I&rsquo;m a Full-Stack &amp; AI Engineer with 5+ years of
+                experience shipping production software end to end. On the
+                backend, I design RESTful APIs in Python with Django and FastAPI,
+                plus Node.js services — scalable, secure and maintainable.
               </p>
               <p>
-                On the frontend, I build highly responsive, accessible interfaces
-                with React, leveraging modern state management and
-                component-driven development for seamless experiences.
+                On the AI side, I build LLM-powered features into real products:
+                integrating model APIs, designing prompts and context, and
+                wiring AI into workflows so it does useful work, not just demos.
               </p>
               <p>
-                I also build mobile apps with Flutter and Dart — native-compiled
-                applications that run smoothly across Android and iOS.
+                On the frontend, I build fast, accessible interfaces with React,
+                Next.js and TypeScript, and I ship cross-platform mobile apps
+                with Flutter when a product needs one.
               </p>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              {["RESTful APIs", "Component-driven UI", "Type-safe code", "Pixel-perfect motion"].map((t) => (
+              {["LLM integrations", "Python APIs", "Full-stack delivery", "Type-safe code"].map((t) => (
                 <span
                   key={t}
                   className="rounded-full border border-border bg-secondary/50 px-3 py-1 text-sm text-muted-foreground"
@@ -147,7 +148,7 @@ const AboutPage = () => {
                   className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary/10 blur-3xl opacity-0 transition-opacity group-hover:opacity-100"
                 />
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 text-xl text-primary">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-sky-500/20 text-xl text-primary">
                     {group.glyph}
                   </span>
                   <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -157,7 +158,7 @@ const AboutPage = () => {
                 <ul className="space-y-2">
                   {group.items.map((s) => (
                     <li key={s} className="flex items-center text-muted-foreground">
-                      <span className="mr-3 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
+                      <span className="mr-3 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500" />
                       {s}
                     </li>
                   ))}
@@ -179,7 +180,7 @@ const AboutPage = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <Card className="relative overflow-hidden border-border bg-card/50 p-8 transition-colors duration-300 hover:border-primary/50">
-                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-amber-400" />
+                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-500 via-sky-500 to-teal-400" />
                 <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                   <div>
                     <h3 className="font-display text-xl font-bold text-foreground">{exp.title}</h3>
@@ -207,7 +208,7 @@ const AboutPage = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <Card className="relative overflow-hidden border-border bg-card/50 p-8 transition-colors duration-300 hover:border-primary/50">
-                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-purple-500 via-pink-500 to-amber-400" />
+                <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-500 via-sky-500 to-teal-400" />
                 <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                   <div>
                     <h3 className="font-display text-xl font-bold text-foreground">{edu.degree}</h3>

@@ -2,7 +2,12 @@ import { useMemo, useState } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import SectionTitle from "@/components/SectionTitle";
 import ProjectCard from "@/components/ProjectCard";
-import { useProjects } from "@/hooks/useProjects";
+import { projects as staticProjects } from "@/data/projects";
+
+// Projects are hardcoded in src/data/projects.js for now.
+// Supabase loading is switched off; to re-enable, restore the useProjects() hook here.
+const projects = staticProjects.map((p) => ({ ...p, categories: p.category }));
+const loading = false;
 
 const eased = [0.22, 1, 0.36, 1];
 
@@ -20,14 +25,13 @@ const SkeletonCard = () => (
 
 const ProjectPage = () => {
   const [filter, setFilter] = useState("all");
-  const { projects, loading } = useProjects();
 
   const filtered = useMemo(
     () =>
       filter === "all"
         ? projects
         : projects.filter((p) => p.categories?.includes(filter)),
-    [filter, projects]
+    [filter]
   );
 
   return (
@@ -61,7 +65,7 @@ const ProjectPage = () => {
                     {active && (
                       <motion.span
                         layoutId="filter-pill"
-                        className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -82,12 +86,7 @@ const ProjectPage = () => {
                 filtered.map((project) => (
                   <ProjectCard
                     key={project.id}
-                    project={{
-                      ...project,
-                      image: project.image_url,
-                      demoUrl: project.demo_url,
-                      codeUrl: project.code_url,
-                    }}
+                    project={project}
                   />
                 ))}
             </AnimatePresence>

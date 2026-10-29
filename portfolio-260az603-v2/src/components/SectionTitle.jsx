@@ -22,12 +22,12 @@ const SectionTitle = ({ children, eyebrow, className = "" }) => {
         </motion.span>
       )}
       <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-        <span className="gradient-text">{children}</span>
+        <span className="text-primary">{children}</span>
       </h2>
       <div className="mt-5 flex items-center gap-2">
-        <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
-        <span className="block h-px w-16 bg-gradient-to-r from-purple-500 via-pink-500 to-amber-400" />
-        <span className="h-1.5 w-1.5 rounded-full bg-pink-500" />
+        <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+        <span className="block h-px w-16 bg-gradient-to-r from-cyan-500 via-sky-500 to-teal-400" />
+        <span className="h-1.5 w-1.5 rounded-full bg-sky-500" />
       </div>
     </motion.div>
   );

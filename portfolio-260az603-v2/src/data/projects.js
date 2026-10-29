@@ -1,8 +1,7 @@
 import MoomentsImg from "@/assets/moomentsImg.jpg";
-import PortfolioImg from "@/assets/portfolioImg.png";
 import PDFExplorerImg from "@/assets/pdfexplorerImg.png";
 import HatsOffImg from "@/assets/hatsoffImg.png";
-import PlaceholderImg from "@/assets/placeholderImg.png";
+import AshiriImg from "@/assets/ashiriImg.jpg";
 
 export const projects = [
   {
@@ -16,14 +15,14 @@ export const projects = [
     demoUrl: "https://moooments.vercel.app/",
   },
   {
-    id: "portfolio",
-    title: "Portfolio Website",
+    id: "ashiri",
+    title: "Àṣhírí",
     description:
-      "A responsive portfolio site built with React, Tailwind v4 and Framer Motion. Animated, accessible, fast.",
-    image: PortfolioImg,
-    technologies: ["React", "Tailwind CSS", "Framer Motion"],
-    category: ["frontend"],
-    demoUrl: "https://example.com",
+      "An e-commerce store for an artisanal tank-top brand, with reviews, a community gallery and an admin dashboard.",
+    image: AshiriImg,
+    technologies: ["Angular", "TypeScript", "PostgreSQL", "Paystack"],
+    category: ["fullstack", "collab"],
+    demoUrl: "https://ashiri.vercel.app/",
   },
   {
     id: "pdf-explorer",
@@ -45,27 +44,6 @@ export const projects = [
     technologies: ["React", "Tailwind CSS", "Firebase", "Flutterwave"],
     category: ["fullstack", "collab"],
     demoUrl: "https://example.com",
-  },
-  {
-    id: "blog-api",
-    title: "Blog API",
-    description:
-      "A RESTful API for a blog platform with authentication, authorization and pagination.",
-    image: PlaceholderImg,
-    technologies: ["Node.js", "Express", "MongoDB", "JWT"],
-    category: ["backend"],
-    codeUrl: "https://github.com",
-  },
-  {
-    id: "social-dashboard",
-    title: "Social Dashboard",
-    description:
-      "A dashboard surfacing analytics from across social platforms with interactive, responsive charts.",
-    image: PlaceholderImg,
-    technologies: ["React", "Chart.js", "Tailwind CSS"],
-    category: ["frontend"],
-    demoUrl: "https://example.com",
-    codeUrl: "https://github.com",
   },
 ];
 

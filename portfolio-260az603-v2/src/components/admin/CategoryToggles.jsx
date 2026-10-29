@@ -25,7 +25,7 @@ const CategoryToggles = ({ value = [], onChange }) => {
             onClick={() => toggle(opt.value)}
             className={`rounded-full px-3 py-1.5 text-sm transition-all ${
               active
-                ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                ? "bg-gradient-to-r from-cyan-500 to-sky-500 text-white"
                 : "border border-border bg-card/50 text-muted-foreground hover:text-foreground"
             }`}
           >

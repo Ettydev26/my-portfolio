@@ -6,7 +6,7 @@ import SectionTitle from "@/components/SectionTitle";
 import MagneticWrap from "@/components/MagneticWrap";
 import { contactInfo, socialLinks } from "@/data/socialLinks.jsx";
 
-const RECIPIENT = "ettiolayinka4@gmail.com";
+const RECIPIENT = "ettydev26@gmail.com";
 const eased = [0.22, 1, 0.36, 1];
 
 const ContactPage = () => {
@@ -61,7 +61,7 @@ const ContactPage = () => {
           >
             <h3 className="font-display text-3xl md:text-4xl font-bold mb-4 text-balance">
               Let&rsquo;s work{" "}
-              <span className="font-serif-italic gradient-text">together</span>
+              <span className="font-serif-italic text-primary">together</span>
             </h3>
             <p className="mb-8 max-w-md leading-relaxed text-muted-foreground">
               I&rsquo;m currently open to new opportunities. Whether you have a
@@ -77,7 +77,7 @@ const ContactPage = () => {
                       {...(href ? { href, "aria-label": `${name}: ${value}` } : {})}
                       className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-4 transition-colors duration-300 hover:border-primary/50"
                     >
-                      <div className="rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-3 text-primary">
+                      <div className="rounded-xl bg-gradient-to-br from-cyan-500/20 to-sky-500/20 p-3 text-primary">
                         <Icon size={20} />
                       </div>
                       <div>
@@ -123,11 +123,11 @@ const ContactPage = () => {
             <div className="relative overflow-hidden rounded-3xl border border-border bg-card/50 p-8 glow-sm">
               <div
                 aria-hidden
-                className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-pink-500/20 blur-3xl"
+                className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-sky-500/20 blur-3xl orb-soft"
               />
               <div
                 aria-hidden
-                className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-purple-500/20 blur-3xl"
+                className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-cyan-500/20 blur-3xl orb-soft"
               />
 
               <h3 className="relative font-display text-2xl md:text-3xl font-bold mb-6">
@@ -142,13 +142,13 @@ const ContactPage = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4, ease: eased }}
-                    className="relative flex flex-col items-center gap-4 rounded-2xl border border-primary/30 bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-10 text-center"
+                    className="relative flex flex-col items-center gap-4 rounded-2xl border border-primary/30 bg-gradient-to-br from-cyan-500/10 to-sky-500/10 p-10 text-center"
                   >
                     <motion.div
                       initial={{ scale: 0, rotate: -90 }}
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
-                      className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white glow"
+                      className="grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-cyan-500 to-sky-500 text-white glow"
                     >
                       <Check size={28} strokeWidth={3} />
                     </motion.div>
@@ -204,7 +204,7 @@ const ContactPage = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3.5 font-medium text-white transition-all hover:from-purple-600 hover:to-pink-600 disabled:opacity-70"
+                        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-cyan-500 to-sky-500 px-6 py-3.5 font-medium text-white transition-all hover:from-cyan-600 hover:to-sky-600 disabled:opacity-70"
                       >
                         <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                         <AnimatePresence mode="wait">

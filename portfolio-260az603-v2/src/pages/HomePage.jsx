@@ -38,23 +38,23 @@ const HomePage = () => {
 
   return (
     <>
-      <title>EttyDev — Home</title>
+      <title>EttyDev — Full-Stack &amp; AI Engineer</title>
 
       <section className="relative min-h-screen flex items-center overflow-hidden pt-24">
         {/* Background atmosphere */}
         <motion.div
           aria-hidden
-          className="absolute top-1/4 -left-32 h-[28rem] w-[28rem] rounded-full bg-purple-600/25 blur-[120px]"
+          className="absolute top-1/4 -left-32 h-[28rem] w-[28rem] rounded-full bg-cyan-600/25 blur-[120px] orb-soft"
           style={{ x: orb1X, y: orb1Y }}
         />
         <motion.div
           aria-hidden
-          className="absolute top-1/3 right-0 h-[26rem] w-[26rem] rounded-full bg-pink-500/25 blur-[120px]"
+          className="absolute top-1/3 right-0 h-[26rem] w-[26rem] rounded-full bg-sky-500/25 blur-[120px] orb-soft"
           style={{ x: orb2X, y: orb2Y }}
         />
         <motion.div
           aria-hidden
-          className="absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-amber-400/15 blur-[120px]"
+          className="absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-teal-400/15 blur-[120px] orb-soft"
           style={{ x: orb3X, y: orb3Y }}
         />
 
@@ -74,7 +74,7 @@ const HomePage = () => {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
               <span className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                Available for work
+                Open to Full-Stack &amp; AI roles
               </span>
             </motion.div>
 
@@ -101,7 +101,7 @@ const HomePage = () => {
                       ease: eased,
                       delay: 0.35 + i * 0.05,
                     }}
-                    className="inline-block gradient-text"
+                    className="inline-block text-primary"
                     style={{ transformOrigin: "bottom" }}
                   >
                     {ch}
@@ -125,9 +125,9 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: eased, delay: 1 }}
             >
-              Full Stack Developer &amp;{" "}
-              <span className="font-serif-italic text-foreground">creative</span>{" "}
-              coder.
+              Full-Stack &amp;{" "}
+              <span className="font-serif-italic text-primary">AI</span>{" "}
+              Engineer.
             </motion.h2>
 
             <motion.p
@@ -136,9 +136,9 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: eased, delay: 1.15 }}
             >
-              I craft beautiful, functional digital experiences that bring ideas
-              to life — built with modern web &amp; mobile tools, and a strong
-              taste for detail.
+              I build production web apps and the AI inside them — Python and
+              FastAPI backends, React and TypeScript frontends, and LLM-powered
+              features that do real work for real users.
             </motion.p>
 
             {/* CTAs */}
@@ -152,7 +152,7 @@ const HomePage = () => {
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 text-white border-0 glow-sm hover:from-purple-600 hover:to-pink-600"
+                  className="h-12 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500 px-6 text-white border-0 glow-sm hover:from-cyan-600 hover:to-sky-600"
                 >
                   <Link to="/project">
                     View my work
@@ -186,9 +186,10 @@ const HomePage = () => {
                 ["5+", "years coding"],
                 ["20+", "projects shipped"],
                 ["12+", "tools mastered"],
+                ["AI", "LLM-powered products"],
               ].map(([num, label]) => (
                 <div key={label} className="flex items-baseline gap-2">
-                  <span className="font-display text-3xl font-bold gradient-text">
+                  <span className="font-display text-3xl font-bold text-primary">
                     {num}
                   </span>
                   <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">

@@ -29,7 +29,7 @@ const ProjectCard = ({ project }) => {
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card/50 transition-colors duration-300 hover:border-primary/50"
       style={{
         backgroundImage:
-          "radial-gradient(450px circle at var(--mx,50%) var(--my,50%), rgba(192,132,252,0.10), transparent 40%)",
+          "radial-gradient(450px circle at var(--mx,50%) var(--my,50%), var(--spotlight), transparent 40%)",
       }}
     >
       <div className="relative h-[220px] overflow-hidden">
@@ -54,7 +54,7 @@ const ProjectCard = ({ project }) => {
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2.5 text-sm font-medium text-white hover:from-purple-600 hover:to-pink-600 transition-all"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 px-4 py-2.5 text-sm font-medium text-white hover:from-cyan-600 hover:to-sky-600 transition-all"
             >
               Live demo <ArrowUpRight size={15} />
             </a>

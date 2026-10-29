@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <Link to="/" className="font-display text-3xl font-bold">
-              <span className="gradient-text">Etty</span>
+              <span className="text-primary">Etty</span>
               <span className="text-foreground">.dev</span>
             </Link>
             <p className="mt-3 max-w-xs text-sm text-muted-foreground leading-relaxed">

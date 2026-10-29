@@ -4,9 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Bricolage Grotesque', 'Geist', ui-sans-serif, sans-serif;
-  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -50,30 +50,55 @@
 
 :root {
   --radius: 0.875rem;
-  /* Deep violet creative theme */
-  --background: #0a0817;
-  --foreground: #f5f4ff;
-  --card: #110d26;
-  --card-foreground: #f5f4ff;
-  --popover: #110d26;
-  --popover-foreground: #f5f4ff;
-  --primary: #a855f7;
-  --primary-foreground: #ffffff;
-  --secondary: #1c1738;
-  --secondary-foreground: #f5f4ff;
-  --muted: #1c1738;
-  --muted-foreground: #9b9ab8;
-  --accent: #c084fc;
-  --accent-foreground: #ffffff;
+  /* Dark slate + cyan theme */
+  --background: #0b1220;
+  --foreground: #f1f5f9;
+  --card: #111a2b;
+  --card-foreground: #f1f5f9;
+  --popover: #111a2b;
+  --popover-foreground: #f1f5f9;
+  --primary: #22d3ee;
+  --primary-foreground: #0b1220;
+  --secondary: #16233a;
+  --secondary-foreground: #f1f5f9;
+  --muted: #16233a;
+  --muted-foreground: #94a3b8;
+  --accent: #67e8f9;
+  --accent-foreground: #0b1220;
   --destructive: #ef4444;
-  --border: #2a2350;
-  --input: #1c1738;
-  --ring: #a855f7;
-  --chart-1: #a855f7;
-  --chart-2: #ec4899;
-  --chart-3: #8b5cf6;
-  --chart-4: #06b6d4;
-  --chart-5: #f59e0b;
+  --border: #1e2d45;
+  --input: #16233a;
+  --ring: #22d3ee;
+  --chart-1: #06b6d4;
+  --chart-2: #0ea5e9;
+  --chart-3: #0284c7;
+  --chart-4: #14b8a6;
+  --chart-5: #64748b;
+  --spotlight: rgba(34, 211, 238, 0.10);
+}
+
+/* Light theme: class set on <html> by index.html / useTheme */
+:root.light {
+  /* White + cyan theme (default) */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #ecfeff;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+  --accent: #06b6d4;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: #e2e8f0;
+  --input: #f1f5f9;
+  --ring: #0891b2;
+  --spotlight: rgba(8, 145, 178, 0.08);
 }
 
 @layer base {
@@ -87,7 +112,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
-    font-feature-settings: 'cv11', 'ss03';
+    font-feature-settings: 'cv11';
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
@@ -158,48 +183,23 @@
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--background); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #a855f7, #ec4899);
+  background: linear-gradient(180deg, #06b6d4, #0ea5e9);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 ::selection {
-  background: rgba(192, 132, 252, 0.35);
+  background: rgba(34, 211, 238, 0.35);
   color: #fff;
 }
 
 /* ---------- Typography utilities ---------- */
-.font-display { font-family: var(--font-display); letter-spacing: -0.03em; }
+.font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
 .font-serif-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.015em;
-}
-
-.gradient-text {
-  background: linear-gradient(115deg, #c084fc 0%, #ec4899 45%, #f59e0b 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 10s ease infinite;
-}
-
-.text-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--foreground) 0%,
-    var(--foreground) 40%,
-    #c084fc 50%,
-    var(--foreground) 60%,
-    var(--foreground) 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 3.5s linear infinite;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 /* ---------- Decorative borders & glows ---------- */
@@ -213,7 +213,7 @@
   inset: 0;
   padding: 1.5px;
   border-radius: inherit;
-  background: linear-gradient(135deg, #a855f7, #ec4899, #f59e0b);
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9, #14b8a6);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -221,32 +221,32 @@
   z-index: 1;
 }
 
-.glow     { box-shadow: 0 0 60px rgba(168, 85, 247, 0.35); }
-.glow-sm  { box-shadow: 0 0 24px rgba(168, 85, 247, 0.25); }
-.glow-pink{ box-shadow: 0 0 60px rgba(236, 72, 153, 0.30); }
+.glow     { box-shadow: 0 0 60px rgba(6, 182, 212, 0.35); }
+.glow-sm  { box-shadow: 0 0 24px rgba(6, 182, 212, 0.25); }
+.glow-pink{ box-shadow: 0 0 60px rgba(14, 165, 233, 0.30); }
 
 /* ---------- Background patterns ---------- */
 .bg-grid-pattern {
   background-image:
-    linear-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168, 85, 247, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 90% 60% at 50% 30%, #000 30%, transparent 80%);
 }
 
 .bg-dot-pattern {
-  background-image: radial-gradient(circle at 1px 1px, rgba(168, 85, 247, 0.18) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(6, 182, 212, 0.18) 1px, transparent 0);
   background-size: 22px 22px;
 }
 
 .bg-conic-mesh {
   background: conic-gradient(
     from 180deg at 50% 50%,
-    #a855f7 0deg,
-    #ec4899 90deg,
-    #f59e0b 180deg,
-    #c084fc 270deg,
-    #a855f7 360deg
+    #06b6d4 0deg,
+    #0ea5e9 90deg,
+    #14b8a6 180deg,
+    #22d3ee 270deg,
+    #06b6d4 360deg
   );
   filter: blur(90px);
   opacity: 0.18;
@@ -269,15 +269,17 @@
 }
 .cursor-dot {
   width: 8px; height: 8px;
-  background: linear-gradient(135deg, #c084fc, #ec4899);
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
   mix-blend-mode: difference;
-  box-shadow: 0 0 12px rgba(192,132,252,0.6);
+  box-shadow: 0 0 12px rgba(34,211,238,0.6);
 }
 .cursor-ring {
   width: 38px; height: 38px;
-  border: 1.5px solid rgba(192, 132, 252, 0.55);
+  border: 1.5px solid rgba(34, 211, 238, 0.55);
   backdrop-filter: blur(2px);
+  transition: border-color 0.2s;
 }
+.cursor-ring.is-hovering { border-color: rgba(14, 165, 233, 0.7); }
 @media (hover: none) {
   .cursor-dot, .cursor-ring { display: none; }
 }
@@ -303,5 +305,42 @@
   inset: 0;
   display: inline-block;
 }
-.glitch-layer.r { color: #ec4899; mix-blend-mode: screen; animation: glitch-x 2.2s infinite; }
+.glitch-layer.r { color: #0ea5e9; mix-blend-mode: screen; animation: glitch-x 2.2s infinite; }
 .glitch-layer.b { color: #06b6d4; mix-blend-mode: screen; animation: glitch-x 2.6s infinite reverse; }
+
+/* ---------- Light theme overrides for dark-tuned effects ---------- */
+.light ::selection {
+  background: rgba(8, 145, 178, 0.2);
+  color: var(--foreground);
+}
+.light .glow      { box-shadow: 0 10px 40px rgba(8, 145, 178, 0.22); }
+.light .glow-sm   { box-shadow: 0 6px 18px rgba(8, 145, 178, 0.2); }
+.light .glow-pink { box-shadow: 0 10px 40px rgba(2, 132, 199, 0.2); }
+.light .bg-grid-pattern {
+  background-image:
+    linear-gradient(rgba(8, 145, 178, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(8, 145, 178, 0.07) 1px, transparent 1px);
+}
+.light .bg-dot-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(8, 145, 178, 0.16) 1px, transparent 0);
+}
+.light .bg-conic-mesh { opacity: 0.12; }
+/* Dark grain multiplied in, instead of white grain overlaid */
+.light .noise-overlay {
+  filter: invert(1);
+  mix-blend-mode: multiply;
+  opacity: 0.04;
+}
+.light .cursor-dot {
+  mix-blend-mode: normal;
+  box-shadow: 0 0 10px rgba(8, 145, 178, 0.45);
+}
+.light .cursor-ring { border-color: rgba(8, 145, 178, 0.5); }
+.light .cursor-ring.is-hovering { border-color: rgba(2, 132, 199, 0.65); }
+.light .glitch-layer { mix-blend-mode: multiply; }
+.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22d3ee, #38bdf8);
+}
+
+/* Blurred atmosphere orbs read heavier on white; soften them */
+.light .orb-soft { opacity: 0.6; }

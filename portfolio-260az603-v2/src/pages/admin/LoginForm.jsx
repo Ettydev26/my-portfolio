@@ -62,7 +62,7 @@ const LoginForm = () => {
         <button
           type="submit"
           disabled={submitting}
-          className="mt-6 w-full rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2.5 text-sm font-medium text-white hover:from-purple-600 hover:to-pink-600 transition-all disabled:opacity-60"
+          className="mt-6 w-full rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 px-4 py-2.5 text-sm font-medium text-white hover:from-cyan-600 hover:to-sky-600 transition-all disabled:opacity-60"
         >
           {submitting ? "Signing in..." : "Sign in"}
         </button>
